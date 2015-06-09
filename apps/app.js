@@ -13,11 +13,10 @@ $(function(){
 
 	function getRequest(searchTerm){
 		var params = {
-			s: searchTerm, 
 			r: 'json',
 			part: 'snippet',
 			key: 'AIzaSyCY1te2NATavm5Z_7hjMeyoO5kw4VV_2k0',
-			q: 'search term'
+			q: searchTerm
 		};
 		url='https://www.googleapis.com/youtube/v3/search'
 		$.getJSON(url, params, function(data) {
@@ -32,7 +31,7 @@ $(function(){
 	function showResults(results) {
 		var html = '';
 		$.each(results, function(index,value){
-			html += '<iframe width="400" height="215" frameborder="0" src="' + value.id.videoId + '"></iframe>'
+			html += '<iframe width="400" height="215" frameborder="0" src="https://www.youtube.com/embed/' + value.id.videoId + '"></iframe>'
 			console.log('https://www.youtube.com/watch?v='+ value.id.videoId); 
 		});
 		$('#results').html(html);
